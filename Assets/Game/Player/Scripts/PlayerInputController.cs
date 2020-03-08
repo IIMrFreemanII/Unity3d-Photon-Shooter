@@ -38,7 +38,14 @@ namespace MyGame
 
         private void Update()
         {
-            HandlePlayerInput();
+            CheckForPause(HandlePlayerInput);
+        }
+
+        private void CheckForPause(Action callback)
+        {
+            if (GameUI.IsPause) return;
+            
+            callback?.Invoke();
         }
     }
 }
