@@ -43,7 +43,7 @@ namespace MyGame
 
             public override void OnLeftRoom()
             {
-                SceneManager.LoadScene("MainMenuScene");
+                SceneManager.LoadScene("StartMainMenuScene");
             }
             
             public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
@@ -68,13 +68,13 @@ namespace MyGame
 
             #endregion
 
-            #region Public Methods
+        #region Public Methods
 
-                private void LeaveRoom()
-                {
-                    PhotonNetwork.LeaveRoom();
-                }
+            private void LeaveRoom()
+            {
+                PhotonNetwork.LeaveRoom();
+            }
 
-            #endregion
+        #endregion
     }
 }
