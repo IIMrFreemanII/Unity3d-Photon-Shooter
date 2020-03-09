@@ -26,7 +26,7 @@ namespace MyGame
             {
                 if (IsOfflineMode) return;
                 
-                PhotonNetwork.Instantiate(App.Instance.PlayerData.networkPlayerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+                PhotonNetwork.Instantiate(App.Instance.PlayerData.myNetworkPlayerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
             }
             
             private void OnApplicationQuit()

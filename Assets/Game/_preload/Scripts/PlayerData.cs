@@ -4,6 +4,6 @@ namespace MyGame
 {
     public class PlayerData : MonoBehaviour
     {
-        public MyNetworkPlayer networkPlayerPrefab;
+        public MyNetworkPlayer myNetworkPlayerPrefab;
     }
 }
