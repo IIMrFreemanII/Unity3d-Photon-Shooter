@@ -11,7 +11,6 @@
             <e p="Scripts" t="Include">
               <e p="App.cs" t="Include" />
               <e p="DontDestroyOnLoad.cs" t="Include" />
-              <e p="PlayerData.cs" t="Include" />
             </e>
           </e>
           <e p="Camera" t="Include">
@@ -29,8 +28,9 @@
             <e p="TransformExtensions.cs" t="Include" />
             <e p="Vector3Extensions.cs" t="Include" />
           </e>
-          <e p="GameManager" t="Include">
+          <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
+            <e p="PlayerManager.cs" t="Include" />
           </e>
           <e p="Network" t="Include">
             <e p="Scripts" t="Include">
@@ -44,21 +44,37 @@
               <e p="NetworkPlayerInputController.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />
               <e p="PlayerNetworkWeaponController.cs" t="Include" />
-              <e p="PlayerRevivalHandler.cs" t="Include" />
+              <e p="PlayerRevivalController.cs" t="Include" />
+              <e p="ScriptableObjects" t="Include">
+                <e p="PlayerData.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="UI" t="Include">
-            <e p="DeathPanel" t="Include">
+            <e p="DeathMenu" t="Include">
               <e p="Scripts" t="Include">
                 <e p="DeathMessageCanvas.cs" t="Include" />
                 <e p="DeathMessageCard.cs" t="Include" />
-                <e p="DeathMessageContainer.cs" t="Include" />
                 <e p="DeathMessagePanel.cs" t="Include" />
-                <e p="PlayerRevivalUIHandler.cs" t="Include" />
+                <e p="PlayerRevivalUIController.cs" t="Include" />
                 <e p="RevivalButton.cs" t="Include" />
                 <e p="RevivalInfoCard.cs" t="Include" />
+                <e p="ScriptableObjects" t="Include">
+                  <e p="DeathMessageContainer.cs" t="Include" />
+                </e>
                 <e p="TimeToRevivalText.cs" t="Include" />
               </e>
+            </e>
+            <e p="MainGameMenu" t="Include">
+              <e p="ContinueGameButton.cs" t="Include" />
+              <e p="GameUI.cs" t="Include" />
+              <e p="LeaveRoomButton.cs" t="Include" />
+              <e p="MainGameMenu.cs" t="Include" />
+              <e p="MainGameMenuCanvas.cs" t="Include" />
+              <e p="ScriptableObjects" t="Include">
+                <e p="MainGameMenuContainer.cs" t="Include" />
+              </e>
+              <e p="SettingsButton.cs" t="Include" />
             </e>
             <e p="PlayerGameUIController" t="Include">
               <e p="PlayerGameUIController.cs" t="Include" />
@@ -67,15 +83,6 @@
               <e p="ControlPanel.cs" t="Include" />
               <e p="ControlPlayButton.cs" t="Include" />
               <e p="HandleServerDisconnect.cs" t="Include" />
-              <e p="MainGameMenu" t="Include">
-                <e p="ContinueGameButton.cs" t="Include" />
-                <e p="GameUI.cs" t="Include" />
-                <e p="LeaveRoomButton.cs" t="Include" />
-                <e p="MainGameMenu.cs" t="Include" />
-                <e p="MainGameMenuCanvas.cs" t="Include" />
-                <e p="MainGameMenuContainer.cs" t="Include" />
-                <e p="SettingsButton.cs" t="Include" />
-              </e>
               <e p="MainGameMenuLoader.cs" t="Include" />
               <e p="PlayerNameInputField.cs" t="Include" />
               <e p="ProgressLabel.cs" t="Include" />
@@ -89,9 +96,11 @@
               <e p="ICanDamage.cs" t="Include" />
               <e p="ProjectileLauncher.cs" t="Include" />
               <e p="ProjectileSpawnPosition.cs" t="Include" />
+              <e p="ScriptableObjects" t="Include">
+                <e p="WeaponData.cs" t="Include" />
+              </e>
               <e p="Weapon.cs" t="Include" />
               <e p="WeaponPosition.cs" t="Include" />
-              <e p="WeaponsData.cs" t="Include" />
             </e>
           </e>
         </e>

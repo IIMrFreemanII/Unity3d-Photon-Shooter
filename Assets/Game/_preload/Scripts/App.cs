@@ -9,13 +9,13 @@ namespace MyGame
 
             public static App Instance;
 
-            [SerializeField]
-            private PlayerData playerData;
-            public PlayerData PlayerData => playerData;
+            // [SerializeField]
+            // private PlayerData playerData;
+            // public PlayerData PlayerData => playerData;
 
-            [SerializeField]
-            private WeaponsData weaponsData;
-            public WeaponsData WeaponsData => weaponsData;
+            // [SerializeField]
+            // private WeaponsData weaponsData;
+            // public WeaponsData WeaponsData => weaponsData;
 
         #endregion
 
@@ -25,8 +25,8 @@ namespace MyGame
             {
                 Instance = this;
 
-                playerData = FindObjectOfType<PlayerData>();
-                weaponsData = FindObjectOfType<WeaponsData>();
+                // playerData = FindObjectOfType<PlayerData>();
+                // weaponsData = FindObjectOfType<WeaponsData>();
             }
 
             private void Start()

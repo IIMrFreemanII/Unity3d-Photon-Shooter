@@ -8,29 +8,38 @@ namespace MyGame
     [RequireComponent(typeof(PhotonView))]
     public class MyNetworkPlayer : MonoBehaviour, ITarget
     {
-        public MyNetworkPlayer networkPlayerPrefab = null;
-        public static MyNetworkPlayer LocalNetworkPlayerInstance;
+        public static MyNetworkPlayer LocalMyNetworkPlayerInstance;
+        
         private PhotonView _photonView;
         private Rigidbody _rb;
         
-        [SerializeField] private float health = 100f;
+        [SerializeField] private PlayerData playerData = null;
+        
+        [SerializeField] private float health = 0;
         public float Health
         {
             get => health;
-            set => health = value;
+            set
+            {
+                if (_photonView.IsMine)
+                {
+                    playerData.currentHealth = value;
+                }
+
+                health = value;
+            }
         }
-        
+
         public event Action OnDie;
 
         private void Awake()
         {
-            networkPlayerPrefab = this;
             _photonView = GetComponent<PhotonView>();
             _rb = GetComponent<Rigidbody>();
 
             if (_photonView.IsMine)
             {
-                LocalNetworkPlayerInstance = this;
+                LocalMyNetworkPlayerInstance = this;
             }
         }
 
@@ -46,7 +55,12 @@ namespace MyGame
                 }
             }
         }
-        
+
+        private void OnEnable()
+        {
+            Health = playerData.maxHealth;
+        }
+
         public void TakeDamage(float damage)
         {
             print($"{_photonView.Owner.NickName} got {damage} damage.");
@@ -97,7 +111,8 @@ namespace MyGame
             transform.rotation = Quaternion.identity;
             _rb.velocity = Vector3.zero;
             gameObject.SetActive(true);
-            Health = 100f;
+            
+            Health = playerData.maxHealth;
         }
     }
 }

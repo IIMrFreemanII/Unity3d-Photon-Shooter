@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class RevivalButton : MonoBehaviour
 {
-    public Button revivalButton;
+    public Button button;
 
     public void Initialize()
     {
-        revivalButton = GetComponent<Button>();
+        button = GetComponent<Button>();
     }
 }

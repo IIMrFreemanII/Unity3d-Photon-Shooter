@@ -1,32 +1,23 @@
-﻿using MyGame;
-using Photon.Realtime;
+﻿using Photon.Realtime;
 using UnityEngine;
 
 [RequireComponent(typeof(Weapon))]
 public class ProjectileLauncher : MonoBehaviour
 {
-    [SerializeField]
-    private Bullet bulletPrefab = null;
+    [SerializeField] private WeaponData weaponData = null;
+    
     [SerializeField]
     private ProjectileSpawnPosition projectileSpawnPosition = null;
-    [SerializeField]
-    private float speed = 0f;
-    [SerializeField]
-    private float damage = 10f;
-    
 
-    private Weapon _weapon = null;
-    
     private void Awake()
     {
         projectileSpawnPosition = GetComponentInChildren<ProjectileSpawnPosition>();
-        bulletPrefab = App.Instance.WeaponsData.bulletPrefab;
-        _weapon = GetComponent<Weapon>();
     }
 
     public void Launch(Player owner)
     {
-        Bullet bullet = Instantiate(bulletPrefab, projectileSpawnPosition.transform.position, transform.rotation);
-        bullet.Launch(owner, speed, damage);
+        GameObject bullet = Instantiate(weaponData.bulletPrefab, projectileSpawnPosition.transform.position, transform.rotation);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.Launch(owner, weaponData.bulletSpeed, weaponData.bulletDamage);
     }
 }
