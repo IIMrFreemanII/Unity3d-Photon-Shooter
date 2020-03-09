@@ -5,7 +5,6 @@ using Photon.Realtime;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
 public class Bullet : MonoBehaviour, ICanDamage
 {
     public Bullet bulletPrefab;

@@ -43,6 +43,7 @@
               <e p="MyNetworkPlayer.cs" t="Include" />
               <e p="NetworkPlayerInputController.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />
+              <e p="PlayerNetworkWeaponController.cs" t="Include" />
               <e p="PlayerRevivalHandler.cs" t="Include" />
             </e>
           </e>
@@ -84,10 +85,12 @@
           <e p="Weapons" t="Include">
             <e p="Scripts" t="Include">
               <e p="Bullet.cs" t="Include" />
+              <e p="HandleWeaponEquipment.cs" t="Include" />
               <e p="ICanDamage.cs" t="Include" />
               <e p="ProjectileLauncher.cs" t="Include" />
               <e p="ProjectileSpawnPosition.cs" t="Include" />
               <e p="Weapon.cs" t="Include" />
+              <e p="WeaponPosition.cs" t="Include" />
               <e p="WeaponsData.cs" t="Include" />
             </e>
           </e>
