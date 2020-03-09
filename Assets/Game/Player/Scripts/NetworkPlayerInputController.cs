@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace MyGame
 {
-    public class PlayerInputController : MonoBehaviour
+    [RequireComponent(typeof(PhotonView))]
+    public class NetworkPlayerInputController : MonoBehaviour
     {
         private PhotonView _photonView;
         

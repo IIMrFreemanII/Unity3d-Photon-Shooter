@@ -10,7 +10,7 @@
           <e p="_preload" t="Include">
             <e p="Scripts" t="Include">
               <e p="App.cs" t="Include" />
-              <e p="DDOL.cs" t="Include" />
+              <e p="DontDestroyOnLoad.cs" t="Include" />
               <e p="PlayerData.cs" t="Include" />
             </e>
           </e>
@@ -40,8 +40,8 @@
           <e p="Player" t="Include">
             <e p="Scripts" t="Include">
               <e p="ITarget.cs" t="Include" />
-              <e p="MyPlayer.cs" t="Include" />
-              <e p="PlayerInputController.cs" t="Include" />
+              <e p="MyNetworkPlayer.cs" t="Include" />
+              <e p="NetworkPlayerInputController.cs" t="Include" />
               <e p="PlayerMovement.cs" t="Include" />
               <e p="PlayerRevivalHandler.cs" t="Include" />
             </e>

@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace MyGame
 {
-    public class MyPlayer : MonoBehaviour, ITarget
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(PhotonView))]
+    public class MyNetworkPlayer : MonoBehaviour, ITarget
     {
-        public MyPlayer playerPrefab = null;
-        public static MyPlayer LocalPlayerInstance;
+        public MyNetworkPlayer networkPlayerPrefab = null;
+        public static MyNetworkPlayer LocalNetworkPlayerInstance;
         private PhotonView _photonView;
         private Rigidbody _rb;
         
@@ -22,13 +24,13 @@ namespace MyGame
 
         private void Awake()
         {
-            playerPrefab = this;
+            networkPlayerPrefab = this;
             _photonView = GetComponent<PhotonView>();
             _rb = GetComponent<Rigidbody>();
 
             if (_photonView.IsMine)
             {
-                LocalPlayerInstance = this;
+                LocalNetworkPlayerInstance = this;
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DDOL : MonoBehaviour
+public class DontDestroyOnLoad : MonoBehaviour
 {
     private void Awake()
     {

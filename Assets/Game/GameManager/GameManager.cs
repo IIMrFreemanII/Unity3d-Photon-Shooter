@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace MyGame
 {
-    public class GameManager : MonoBehaviourPunCallbacks
+    public class GameManager : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
     {
         #region Public Fields
 
@@ -26,7 +26,7 @@ namespace MyGame
             {
                 if (IsOfflineMode) return;
                 
-                PhotonNetwork.Instantiate(App.Instance.PlayerData.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+                PhotonNetwork.Instantiate(App.Instance.PlayerData.networkPlayerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
             }
             
             private void OnApplicationQuit()
@@ -64,6 +64,11 @@ namespace MyGame
                 {
                     Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
                 }
+            }
+
+            public void OnPhotonInstantiate(PhotonMessageInfo info)
+            {
+                print($"Instantiate: {info.Sender.NickName}");
             }
 
             #endregion
