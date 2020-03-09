@@ -5,7 +5,6 @@ using Photon.Realtime;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
 public class Bullet : MonoBehaviour, ICanDamage
 {
     public Bullet bulletPrefab;
@@ -29,7 +28,6 @@ public class Bullet : MonoBehaviour, ICanDamage
         if (Physics.Linecast(_lastPosition, currentPosition, out RaycastHit hit))
         {
             hit.collider.gameObject.HandleComponent<ITarget>(target => ApplyDamage(target, Damage));
-            // print(hit.collider.gameObject.name);
             Die();
         }
             

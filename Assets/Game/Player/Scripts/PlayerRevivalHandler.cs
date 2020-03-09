@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerRevivalHandler : MonoBehaviour
 {
     private PlayerRevivalUIHandler _playerRevivalUiHandler;
-    private MyPlayer _localPlayerInstance;
+    private MyNetworkPlayer _localNetworkPlayerInstance;
 
     private void Awake()
     {
         _playerRevivalUiHandler = GetComponent<PlayerRevivalUIHandler>();
-        _localPlayerInstance = MyPlayer.LocalPlayerInstance;
+        _localNetworkPlayerInstance = MyNetworkPlayer.LocalNetworkPlayerInstance;
     }
 
     private void OnEnable()
@@ -25,6 +25,6 @@ public class PlayerRevivalHandler : MonoBehaviour
 
     private void Reborn()
     {
-        _localPlayerInstance.NetworkInitialize();
+        _localNetworkPlayerInstance.NetworkInitialize();
     }
 }

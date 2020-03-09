@@ -4,12 +4,11 @@ using UnityEngine;
 namespace MyGame
 {
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(CapsuleCollider))]
     public class PlayerMovement : MonoBehaviour
     {
-        private PlayerInputController _inputController;
+        private NetworkPlayerInputController _inputController;
         private Rigidbody _rb;
-        private CapsuleCollider _collider;
+        private CapsuleCollider _capsuleCollider;
         private PhotonView _photonView;
         
         [SerializeField]
@@ -19,36 +18,36 @@ namespace MyGame
         private float jumpForce = 5f;
         [SerializeField]
         private float movementSpeed = 40f;
+        public float MovementSpeed => movementSpeed;
+        
         [SerializeField]
         private float rotationSpeed = 1f;
+        public float RotationSpeed => rotationSpeed;
+        
         [SerializeField][Range(0f, 1f)]
-        private float groundCheckRadius = 1f;
-
-
+        private float groundCheckRadius = 0.05f;
+        
         private bool IsGrounded
         {
             get
             {
-                Vector3 bottomCenterPoint = new Vector3(_collider.bounds.center.x, _collider.bounds.min.y, _collider.bounds.center.z);
+                Vector3 bottomCenterPoint = new Vector3(_capsuleCollider.bounds.center.x, _capsuleCollider.bounds.min.y, _capsuleCollider.bounds.center.z);
 
                 //создаем невидимую физическую капсулу и проверяем не пересекает ли она обьект который относится к полу
 
                 //_collider.bounds.size.x / 2 * 0.9f -- эта странная конструкция берет радиус обьекта.
                 // был бы обязательно сферой -- брался бы радиус напрямую, а так пишем по-универсальнее
 
-                return Physics.CheckCapsule(_collider.bounds.center, bottomCenterPoint, _collider.bounds.size.x / 2 * groundCheckRadius, groundLayer);
+                return Physics.CheckCapsule(_capsuleCollider.bounds.center, bottomCenterPoint, _capsuleCollider.bounds.size.x / 2 * groundCheckRadius, groundLayer);
                 // если можно будет прыгать в воздухе, то нужно будет изменить коэфициент 0.9 на меньший.
             }
         }
 
-        public float MovementSpeed => movementSpeed;
-        public float RotationSpeed => rotationSpeed;
-
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
-            _collider = GetComponent<CapsuleCollider>();
-            _inputController = GetComponent<PlayerInputController>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _inputController = GetComponent<NetworkPlayerInputController>();
             _photonView = GetComponent<PhotonView>();
         }
 
