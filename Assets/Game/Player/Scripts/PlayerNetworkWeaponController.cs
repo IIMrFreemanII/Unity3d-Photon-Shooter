@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(NetworkPlayerInputController))]
 public class PlayerNetworkWeaponController : MonoBehaviourPun
 {
-    [SerializeField] private List<Weapon> weaponsToEquip = new List<Weapon>();
+    [SerializeField] private List<GameObject> weaponsToEquip = new List<GameObject>();
     [SerializeField] private List<Transform> weaponTransformsPoints = new List<Transform>();
     [SerializeField] private List<Weapon> equippedWeapons = new List<Weapon>();
 
@@ -34,10 +34,11 @@ public class PlayerNetworkWeaponController : MonoBehaviourPun
     {
         for (int i = 0; i < weaponTransformsPoints.Count; i++)
         {
-            Weapon weapon = Instantiate(weaponsToEquip[i].weaponPrefab, Vector3.zero, Quaternion.identity);
-            equippedWeapons.Add(weapon);
+            GameObject weapon = Instantiate(weaponsToEquip[i], Vector3.zero, Quaternion.identity);
+            Weapon weaponScript = weapon.GetComponent<Weapon>();
             HandleWeaponEquipment handleWeaponEquipment = weapon.GetComponent<HandleWeaponEquipment>();
-            
+
+            equippedWeapons.Add(weaponScript);
             handleWeaponEquipment.Equip(weaponTransformsPoints[i]);
         }
     }
@@ -61,7 +62,7 @@ public class PlayerNetworkWeaponController : MonoBehaviourPun
     {
         foreach (Weapon equippedWeapon in equippedWeapons)
         {
-            equippedWeapon.Fire();
+            equippedWeapon.Fire(photonView.Owner);
         }
     }
 }

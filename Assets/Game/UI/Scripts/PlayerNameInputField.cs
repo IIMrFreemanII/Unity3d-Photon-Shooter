@@ -9,7 +9,7 @@ namespace MyGame
     {
         #region Private Fields
 
-            private TMP_InputField _inputField = null;
+            private TMP_InputField _inputField;
 
         #endregion
         
@@ -67,7 +67,6 @@ namespace MyGame
                 if (string.IsNullOrEmpty(value))
                 {
                     Debug.LogError("Player Name is null or empty");
-                    return;
                 }
 
                 PhotonNetwork.NickName = value;

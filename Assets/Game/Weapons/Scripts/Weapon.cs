@@ -1,20 +1,17 @@
-﻿using Photon.Pun;
+﻿using Photon.Realtime;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Weapon weaponPrefab = null;
     private ProjectileLauncher _projectileLauncher;
-    private PhotonView _photonView;
 
     private void Awake()
     {
-        _photonView = GetComponent<PhotonView>();
         _projectileLauncher = GetComponent<ProjectileLauncher>();
     }
 
-    public void Fire()
+    public void Fire(Player owner)
     {
-        _projectileLauncher.Launch(_photonView.Owner);
+        _projectileLauncher.Launch(owner);
     }
 }

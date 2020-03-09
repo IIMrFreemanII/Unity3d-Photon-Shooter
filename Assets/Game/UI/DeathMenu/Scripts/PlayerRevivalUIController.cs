@@ -3,18 +3,16 @@ using System.Collections;
 using MyGame;
 using UnityEngine;
 
-public class PlayerRevivalUIHandler : MonoBehaviour
+public class PlayerRevivalUIController : MonoBehaviour
 {
-    [SerializeField]
-    private TimeToRevivalText timeToRevivalText = null;
-    [SerializeField]
-    private DeathMessageCard deathMessageCard = null;
-    [SerializeField]
-    private RevivalInfoCard revivalInfoCard = null;
-    [SerializeField]
-    private DeathMessageCanvas deathMessageCanvas = null;
-    private DeathMessageContainer _deathMessageContainer;
-    public RevivalButton revivalButton;
+    [SerializeField] private DeathMessageContainer deathMessageContainer = null;
+    
+    private TimeToRevivalText _timeToRevivalText;
+    private DeathMessageCard _deathMessageCard;
+    private RevivalInfoCard _revivalInfoCard;
+    private DeathMessageCanvas _deathMessageCanvas;
+    private RevivalButton _revivalButton;
+    
     private MyNetworkPlayer _localNetworkPlayerInstance;
     
     public float timeToRevival = 5f;
@@ -27,13 +25,11 @@ public class PlayerRevivalUIHandler : MonoBehaviour
     private void Awake()
     {
         currentTimeToRevival = timeToRevival;
-        _localNetworkPlayerInstance = MyNetworkPlayer.LocalNetworkPlayerInstance;
+        _localNetworkPlayerInstance = MyNetworkPlayer.LocalMyNetworkPlayerInstance;
     }
 
     private void Start()
     {
-        _deathMessageContainer = GameUI.Instance.deathMessageContainer;
-        
         InitialSetUp();
     }
 
@@ -50,13 +46,13 @@ public class PlayerRevivalUIHandler : MonoBehaviour
         
         StartCoroutine(InvokeWithDelay(0f, () =>
         {
-            revivalButton.revivalButton.onClick.AddListener(Reborn);
+            _revivalButton.button.onClick.AddListener(Reborn);
         }));
     }
     
     private void OnDisable()
     {
-        revivalButton.revivalButton.onClick.RemoveListener(Reborn);
+        _revivalButton.button.onClick.RemoveListener(Reborn);
         _localNetworkPlayerInstance.OnDie -= StartCountdown;
     }
 
@@ -67,7 +63,7 @@ public class PlayerRevivalUIHandler : MonoBehaviour
         if (currentTimeToRevival > 0)
         {
             currentTimeToRevival -= Time.deltaTime;
-            timeToRevivalText.SetText($"{Mathf.RoundToInt(currentTimeToRevival)}s");
+            _timeToRevivalText.SetText($"{Mathf.RoundToInt(currentTimeToRevival)}s");
         }
 
         if (currentTimeToRevival <= 0)
@@ -79,19 +75,19 @@ public class PlayerRevivalUIHandler : MonoBehaviour
 
     private void InitialSetUp()
     {
-        timeToRevivalText = _deathMessageContainer.timeToRevivalText;
-        deathMessageCard = _deathMessageContainer.deathMessageCard;
-        revivalInfoCard = _deathMessageContainer.revivalInfoCard;
-        deathMessageCanvas = _deathMessageContainer.deathMessageCanvas;
-        revivalButton = _deathMessageContainer.revivalButton;
-        revivalButton.Initialize();
+        _timeToRevivalText = deathMessageContainer.timeToRevivalText;
+        _deathMessageCard = deathMessageContainer.deathMessageCard;
+        _revivalInfoCard = deathMessageContainer.revivalInfoCard;
+        _deathMessageCanvas = deathMessageContainer.deathMessageCanvas;
+        _revivalButton = deathMessageContainer.revivalButton;
+        _revivalButton.Initialize();
     }
 
     private void ShowRevivalButton()
     {
         _isCountdown = false;
-        deathMessageCard.gameObject.SetActive(false);
-        revivalInfoCard.gameObject.SetActive(true);
+        _deathMessageCard.gameObject.SetActive(false);
+        _revivalInfoCard.gameObject.SetActive(true);
     }
 
     [ContextMenu("Start countdown")]
@@ -102,16 +98,16 @@ public class PlayerRevivalUIHandler : MonoBehaviour
         timeToRevival = 5f;
         currentTimeToRevival = timeToRevival;
 
-        deathMessageCanvas.gameObject.SetActive(true);
-        deathMessageCard.gameObject.SetActive(true);
-        revivalInfoCard.gameObject.SetActive(false);
+        _deathMessageCanvas.gameObject.SetActive(true);
+        _deathMessageCard.gameObject.SetActive(true);
+        _revivalInfoCard.gameObject.SetActive(false);
     }
 
     private void Reborn()
     {
-        deathMessageCanvas.gameObject.SetActive(false);
-        deathMessageCard.gameObject.SetActive(true);
-        revivalInfoCard.gameObject.SetActive(false);
+        _deathMessageCanvas.gameObject.SetActive(false);
+        _deathMessageCard.gameObject.SetActive(true);
+        _revivalInfoCard.gameObject.SetActive(false);
 
         print("Reborn");
 
