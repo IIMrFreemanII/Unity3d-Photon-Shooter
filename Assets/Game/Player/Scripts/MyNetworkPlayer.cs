@@ -23,7 +23,7 @@ namespace MyGame
             {
                 if (_photonView.IsMine)
                 {
-                    playerData.currentHealth = value;
+                    playerData.CurrentHealth = value;
                 }
 
                 health = value;
@@ -58,7 +58,7 @@ namespace MyGame
 
         private void OnEnable()
         {
-            Health = playerData.maxHealth;
+            Health = playerData.MaxHealth;
         }
 
         public void TakeDamage(float damage)
@@ -112,7 +112,7 @@ namespace MyGame
             _rb.velocity = Vector3.zero;
             gameObject.SetActive(true);
             
-            Health = playerData.maxHealth;
+            Health = playerData.MaxHealth;
         }
     }
 }

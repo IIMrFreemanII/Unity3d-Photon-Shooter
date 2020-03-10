@@ -7,7 +7,20 @@ namespace MyGame
     {
         public GameObject playerPrefab;
 
-        public float maxHealth;
-        public float currentHealth;
+        [SerializeField]
+        private float maxHealth;
+        public float MaxHealth
+        {
+            get => maxHealth;
+            set => maxHealth = value;
+        }
+
+        [SerializeField]
+        private float currentHealth;
+        public float CurrentHealth
+        {
+            get => currentHealth;
+            set => currentHealth = value;
+        }
     }
 }
