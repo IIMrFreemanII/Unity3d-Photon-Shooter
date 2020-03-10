@@ -80,7 +80,7 @@ namespace MyGame
             NetworkDie();
         }
 
-        public void NetworkDie()
+        private void NetworkDie()
         {
             if (_photonView.IsMine)
             {
