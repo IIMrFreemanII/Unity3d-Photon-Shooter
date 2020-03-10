@@ -5,9 +5,7 @@ using UnityEngine;
 public class ProjectileLauncher : MonoBehaviour
 {
     [SerializeField] private WeaponData weaponData = null;
-    
-    [SerializeField]
-    private ProjectileSpawnPosition projectileSpawnPosition = null;
+    [SerializeField] private ProjectileSpawnPosition projectileSpawnPosition = null;
 
     private void Awake()
     {
