@@ -1,9 +1,10 @@
 ﻿namespace MyGame
 {
-    public interface ITarget
+    public interface INetworkTarget
     {
         float Health { get; set; }
         void TakeDamage(float damage);
-        void Die();
+        void NetworkDie();
+        void NetworkInitialize();
     }
 }

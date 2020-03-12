@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour, ICanDamage
         Vector3 currentPosition = transform.position + (transform.forward * 0.2f);
         if (Physics.Linecast(_lastPosition, currentPosition, out RaycastHit hit))
         {
-            hit.collider.gameObject.HandleComponent<ITarget>(target => ApplyDamage(target, Damage));
+            hit.collider.gameObject.HandleComponent<INetworkTarget>(target => ApplyDamage(target, Damage));
             Die();
         }
             
@@ -55,8 +55,8 @@ public class Bullet : MonoBehaviour, ICanDamage
         Die();
     }
     
-    public void ApplyDamage(ITarget target, float damage)
+    public void ApplyDamage(INetworkTarget networkTarget, float damage)
     {
-        target.TakeDamage(Damage);
+        networkTarget.TakeDamage(Damage);
     }
 }

@@ -3,6 +3,6 @@
     public interface ICanDamage
     {
         float Damage { get; set; }
-        void ApplyDamage(ITarget target, float damage);
+        void ApplyDamage(INetworkTarget networkTarget, float damage);
     }
 }
