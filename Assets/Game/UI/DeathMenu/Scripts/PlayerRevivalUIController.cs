@@ -13,7 +13,7 @@ public class PlayerRevivalUIController : MonoBehaviour
     private DeathMessageCanvas _deathMessageCanvas;
     private RevivalButton _revivalButton;
     
-    private MyNetworkPlayer _localNetworkPlayerInstance;
+    private NetworkPlayerController _networkPlayerController;
     
     public float timeToRevival = 5f;
     public float currentTimeToRevival;
@@ -25,7 +25,7 @@ public class PlayerRevivalUIController : MonoBehaviour
     private void Awake()
     {
         currentTimeToRevival = timeToRevival;
-        _localNetworkPlayerInstance = MyNetworkPlayer.LocalMyNetworkPlayerInstance;
+        _networkPlayerController = MyNetworkPlayer.MyLocalNetworkPlayerInstance.GetComponent<NetworkPlayerController>();
     }
 
     private void Start()
@@ -42,7 +42,7 @@ public class PlayerRevivalUIController : MonoBehaviour
 
     private void OnEnable()
     {
-        _localNetworkPlayerInstance.OnDie += StartCountdown;
+        _networkPlayerController.OnDie += StartCountdown;
         
         StartCoroutine(InvokeWithDelay(0f, () =>
         {
@@ -53,7 +53,7 @@ public class PlayerRevivalUIController : MonoBehaviour
     private void OnDisable()
     {
         _revivalButton.button.onClick.RemoveListener(Reborn);
-        _localNetworkPlayerInstance.OnDie -= StartCountdown;
+        _networkPlayerController.OnDie -= StartCountdown;
     }
 
     private void HandleTimer()

@@ -5,10 +5,14 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData = null;
+
+    public static  Vector3 DefaultSpawnPosition = new Vector3(0f, 5f, 0f);
+    public static Quaternion DefaultSpawnRotation = Quaternion.identity;
+    
     private void Start()
     {
         if (GameManager.IsOfflineMode) return;
         
-        PhotonNetwork.Instantiate(playerData.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+        PhotonNetwork.Instantiate(playerData.playerPrefab.name, DefaultSpawnPosition, DefaultSpawnRotation);
     }
 }

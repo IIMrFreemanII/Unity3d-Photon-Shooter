@@ -1,16 +1,17 @@
 ﻿using MyGame;
-using Photon.Pun;
 using UnityEngine;
 
 public class PlayerRevivalController : MonoBehaviour
 {
     private PlayerRevivalUIController _playerRevivalUiController;
     private MyNetworkPlayer _localNetworkPlayerInstance;
+    private NetworkPlayerController _networkPlayerController;
 
     private void Awake()
     {
         _playerRevivalUiController = GetComponent<PlayerRevivalUIController>();
-        _localNetworkPlayerInstance = MyNetworkPlayer.LocalMyNetworkPlayerInstance;
+        _localNetworkPlayerInstance = MyNetworkPlayer.MyLocalNetworkPlayerInstance;
+        _networkPlayerController = _localNetworkPlayerInstance.GetComponent<NetworkPlayerController>();
     }
 
     private void OnEnable()
@@ -25,6 +26,6 @@ public class PlayerRevivalController : MonoBehaviour
 
     private void Reborn()
     {
-        _localNetworkPlayerInstance.NetworkInitialize();
+        _networkPlayerController.NetworkInitialize();
     }
 }
