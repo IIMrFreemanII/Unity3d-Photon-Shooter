@@ -40,7 +40,7 @@ namespace MyGame
     
         #region Public Fields
 
-    
+            public bool isOfflineMode = true;
 
         #endregion
 
@@ -48,6 +48,7 @@ namespace MyGame
 
             private void Awake()
             {
+                PhotonNetwork.OfflineMode = isOfflineMode;
                 // #Critical
                 // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
                 PhotonNetwork.AutomaticallySyncScene = true;
@@ -62,6 +63,8 @@ namespace MyGame
                 progressLabel.gameObject.SetActive(false);
                 controlPanel.gameObject.SetActive(true);
                 quitButton.gameObject.SetActive(true);
+                
+                if (isOfflineMode) Connect();
             }
 
         #endregion

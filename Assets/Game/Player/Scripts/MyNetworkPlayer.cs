@@ -19,17 +19,17 @@ namespace MyGame
             }
         }
 
-        private void Start()
-        {
-            CameraHandler cameraHandler = GetComponent<CameraHandler>();
-
-            if (cameraHandler != null)
-            {
-                if (_photonView.IsMine)
-                {
-                    cameraHandler.OnStartFollowing();
-                }
-            }
-        }
+        // private void Start()
+        // {
+        //     CameraHandler cameraHandler = GetComponent<CameraHandler>();
+        //
+        //     if (cameraHandler != null)
+        //     {
+        //         if (_photonView.IsMine)
+        //         {
+        //             cameraHandler.OnStartFollowing();
+        //         }
+        //     }
+        // }
     }
 }

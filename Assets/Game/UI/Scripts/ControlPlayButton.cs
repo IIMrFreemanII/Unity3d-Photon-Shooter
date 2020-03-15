@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace MyGame
@@ -12,6 +13,14 @@ namespace MyGame
         {
             _playButton = GetComponent<Button>();
             _networkManager = FindObjectOfType<NetworkManager>();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                _networkManager.Connect();
+            }
         }
 
         private void OnEnable()

@@ -89,7 +89,7 @@ namespace MyGame
 
             if (Mathf.Abs(deltaMouseX) > 0)
             {
-                Vector3 newRotation = new Vector3(0, deltaMouseX, 0) * (RotationSpeed * Time.fixedDeltaTime);
+                Vector3 newRotation = new Vector3(0, deltaMouseX, 0);
                 transform.Rotate(newRotation);
             }
         }

@@ -16,6 +16,10 @@
           <e p="Camera" t="Include">
             <e p="Scripts" t="Include">
               <e p="CameraHandler.cs" t="Include" />
+              <e p="CameraMain.cs" t="Include" />
+              <e p="CameraPivot.cs" t="Include" />
+              <e p="FpsAndTpsCameraController.cs" t="Include" />
+              <e p="MyMainCameraManager.cs" t="Include" />
             </e>
           </e>
           <e p="Environment" t="Include">
