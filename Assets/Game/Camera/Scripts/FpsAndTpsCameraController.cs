@@ -14,8 +14,8 @@ public class FpsAndTpsCameraController : MonoBehaviour
 
     [SerializeField] private float currentXAngle;
 
-    [SerializeField] private float clamXAngleMin = -30f;
-    [SerializeField] private float clamXAngleMax = 30f;
+    [SerializeField] private float clamXAngleMin = -45f;
+    [SerializeField] private float clamXAngleMax = 75f;
 
     // FPS - first person shooter
     // TPS - third person shooter
@@ -60,13 +60,13 @@ public class FpsAndTpsCameraController : MonoBehaviour
         cameraPivot.transform.localPosition = tpsPivotPos;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (!_photonView.IsMine) return;
-
+    
         HandlePosition();
         HandleRotation();
-
+    
         if (!isFps)
         {
             HandleCameraCollisions();

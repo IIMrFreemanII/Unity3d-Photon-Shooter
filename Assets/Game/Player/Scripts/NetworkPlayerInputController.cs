@@ -46,8 +46,8 @@ namespace MyGame
             Horizontal = Input.GetAxis("Horizontal");
             Vertical = Input.GetAxis("Vertical");
             
-            DeltaMouseX = Input.GetAxis("Mouse X") * (sensitivity * Time.fixedDeltaTime);
-            DeltaMouseY = Input.GetAxis("Mouse Y") * (sensitivity * Time.fixedDeltaTime);
+            DeltaMouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
+            DeltaMouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
                 
             Jump = Input.GetAxis("Jump");
                 

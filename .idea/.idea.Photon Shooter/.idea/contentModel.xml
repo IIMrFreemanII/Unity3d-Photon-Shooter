@@ -20,6 +20,7 @@
               <e p="CameraPivot.cs" t="Include" />
               <e p="FpsAndTpsCameraController.cs" t="Include" />
               <e p="MyMainCameraManager.cs" t="Include" />
+              <e p="TargetLook.cs" t="Include" />
             </e>
           </e>
           <e p="Environment" t="Include">
@@ -106,6 +107,7 @@
                 <e p="WeaponData.cs" t="Include" />
               </e>
               <e p="Weapon.cs" t="Include" />
+              <e p="WeaponPivot.cs" t="Include" />
               <e p="WeaponPosition.cs" t="Include" />
             </e>
           </e>

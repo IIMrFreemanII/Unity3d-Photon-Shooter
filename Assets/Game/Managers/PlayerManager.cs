@@ -11,8 +11,6 @@ public class PlayerManager : MonoBehaviour
     
     private void Start()
     {
-        if (GameManager.IsOfflineMode) return;
-        
         PhotonNetwork.Instantiate(playerData.playerPrefab.name, DefaultSpawnPosition, DefaultSpawnRotation);
     }
 }

@@ -51,7 +51,7 @@ public class NetworkPlayerController : MonoBehaviour, INetworkTarget, IPunObserv
     {
         Health = playerData.MaxHealth;
     }
-
+    
     public void TakeDamage(float damage)
     {
         print($"{_photonView.Owner.NickName} got {damage} damage.");
