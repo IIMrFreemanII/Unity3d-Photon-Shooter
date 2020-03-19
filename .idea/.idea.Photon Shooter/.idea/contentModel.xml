@@ -97,6 +97,9 @@
             </e>
           </e>
           <e p="Weapons" t="Include">
+            <e p="Particles" t="Include">
+              <e p="HandleParticle.cs" t="Include" />
+            </e>
             <e p="Scripts" t="Include">
               <e p="Bullet.cs" t="Include" />
               <e p="HandleWeaponEquipment.cs" t="Include" />

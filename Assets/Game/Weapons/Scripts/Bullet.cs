@@ -8,6 +8,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, ICanDamage
 {
     public Bullet bulletPrefab;
+    [SerializeField] private ParticleSystem bulletHitEffect = null;
     private Rigidbody _rb;
     public Player Owner { get; private set; }
     private Vector3 _lastPosition;
@@ -28,6 +29,7 @@ public class Bullet : MonoBehaviour, ICanDamage
         if (Physics.Linecast(_lastPosition, currentPosition, out RaycastHit hit))
         {
             hit.collider.gameObject.HandleComponent<INetworkTarget>(target => ApplyDamage(target, Damage));
+            Instantiate(bulletHitEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Die();
         }
             
