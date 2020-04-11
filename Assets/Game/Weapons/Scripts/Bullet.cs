@@ -4,27 +4,22 @@ using MyGame;
 using Photon.Realtime;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour, ICanDamage
 {
     public Bullet bulletPrefab;
     [SerializeField] private ParticleSystem bulletHitEffect = null;
-    private Rigidbody _rb;
     public Player Owner { get; private set; }
     private Vector3 _lastPosition;
 
-    [SerializeField]
-    private float timeToDie = 0f;
+    [SerializeField] private float timeToDie = 0f;
+    [SerializeField] private float bulletSpeed = 0f;
 
     public float Damage { get; set; }
 
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
-    
     private void Update()
     {
+        transform.Translate(Vector3.forward * (Time.deltaTime * bulletSpeed));
+        
         Vector3 currentPosition = transform.position + (transform.forward * 0.2f);
         if (Physics.Linecast(_lastPosition, currentPosition, out RaycastHit hit))
         {
@@ -36,13 +31,14 @@ public class Bullet : MonoBehaviour, ICanDamage
         _lastPosition = transform.position;
     }
 
-    public void Launch(Player owner, float speed, float damage)
+    public void Launch(Player owner, float speed, float damage, Vector3 spawnPosition)
     {
-        _lastPosition = transform.position;
+        bulletSpeed = speed;
+        transform.position = spawnPosition;
+        _lastPosition = spawnPosition;
         Owner = owner;
         Damage = damage;
         
-        _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         StartCoroutine(DieWithDelay(timeToDie));
     }
 

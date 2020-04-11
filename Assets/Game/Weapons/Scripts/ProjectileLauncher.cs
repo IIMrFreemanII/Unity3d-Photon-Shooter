@@ -14,8 +14,15 @@ public class ProjectileLauncher : MonoBehaviour
 
     public void Launch(Player owner)
     {
-        GameObject bullet = Instantiate(weaponData.bulletPrefab, projectileSpawnPosition.transform.position, transform.rotation);
+        Vector3 bulletSpawnPosition = projectileSpawnPosition.transform.position;
+        
+        GameObject bullet = Instantiate(weaponData.bulletPrefab, bulletSpawnPosition, transform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.Launch(owner, weaponData.bulletSpeed, weaponData.bulletDamage);
+        bulletScript.Launch(
+            owner,
+            weaponData.bulletSpeed,
+            weaponData.bulletDamage,
+            bulletSpawnPosition
+        );
     }
 }
