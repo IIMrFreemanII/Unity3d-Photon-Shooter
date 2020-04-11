@@ -97,7 +97,7 @@ public class PlayerNetworkWeaponController : MonoBehaviourPun
 
     private void InitializeWeapons()
     {
-        for (int i = 0; i < weaponTransformPoints.Count; i++)
+        for (int i = 0; i < weaponsToEquip.Count; i++)
         {
             GameObject weapon = Instantiate(weaponsToEquip[i], Vector3.zero, Quaternion.identity);
             Weapon weaponScript = weapon.GetComponent<Weapon>();
